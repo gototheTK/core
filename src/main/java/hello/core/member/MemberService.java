@@ -1,4 +1,4 @@
-package hello.core.Member;
+package hello.core.member;
 
 public interface MemberService {
 

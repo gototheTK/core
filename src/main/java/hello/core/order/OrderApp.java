@@ -4,9 +4,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import hello.core.AppConfig;
-import hello.core.Member.Grade;
-import hello.core.Member.Member;
-import hello.core.Member.MemberService;
+import hello.core.member.Grade;
+import hello.core.member.Member;
+import hello.core.member.MemberService;
 
 public class OrderApp {
 
