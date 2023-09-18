@@ -18,12 +18,23 @@ public class OrderServiceImpl implements OrderService {
 
     // private final DiscountPolicy discountPolicy = new FixDiscountPolicy();
     // private final DiscountPolicy discountPolicy = new RateDiscountPolicy();
-    private final MemberRepository memberRepository;
-    private final DiscountPolicy discountPolicy;
+    private MemberRepository memberRepository;
+    private DiscountPolicy discountPolicy;
 
-    @Autowired
     public OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
         this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
+    }
+
+    @Autowired(required = false)
+    public void setMemberRepository(MemberRepository memberRepository) {
+        System.out.println("멤버 리파지토리 = " + memberRepository);
+        this.memberRepository = memberRepository;
+    }
+
+    @Autowired(required = false)
+    public void setDiscountPolicy(DiscountPolicy discountPolicy) {
+        System.out.println("디스카운트폴리시 = " + discountPolicy);
         this.discountPolicy = discountPolicy;
     }
 
@@ -38,6 +49,12 @@ public class OrderServiceImpl implements OrderService {
 
     public MemberRepository getMemberRepository() {
         return memberRepository;
+    }
+
+    @Autowired
+    public void init(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+        this.memberRepository = memberRepository;
+        this.discountPolicy = discountPolicy;
     }
 
 }
