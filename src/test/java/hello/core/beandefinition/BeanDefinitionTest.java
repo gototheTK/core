@@ -12,15 +12,16 @@ public class BeanDefinitionTest {
     AnnotationConfigApplicationContext ac = new AnnotationConfigApplicationContext(AppConfig.class);
 
     @Test
-    @DisplayName("빈 설정 메타정보 확인")
-    void findApplication() {
+    @DisplayName("어플리케이션 빈 출력하기")
+    void findApplicationBean() {
         String[] beanDefinitionNames = ac.getBeanDefinitionNames();
         for (String beanDefinitionName : beanDefinitionNames) {
             BeanDefinition beanDefinition = ac.getBeanDefinition(beanDefinitionName);
 
-            if (beanDefinition.getRole() == BeanDefinition.ROLE_APPLICATION) {
-                System.out
-                        .println("beanDefinitionName = " + beanDefinitionName + " beanDefinition = " + beanDefinition);
+            // Role ROLE_APPLICATION: 직접 등록한 어플리케이션 빈
+            // Role ROLE_INFRASTRUCTURE: 스프링이 내부에서 사용하는 빈
+            if (beanDefinitionName.equals(BeanDefinition.ROLE_APPLICATION)) {
+                System.out.println("name = " + beanDefinitionName + "/ object = " + beanDefinition);
             }
 
         }
